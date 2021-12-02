@@ -5,6 +5,7 @@ const getToken = require("./route/getToken");
 const scanPerson = require("./route/scanPerson");
 const getAllScanned = require("./route/getAllScanned");
 const app = express();
+require("dotenv").config();
 
 const http = require("http");
 const server = http.createServer(app);
@@ -14,8 +15,7 @@ const io = new Server(server, {
     origin: "*",
   },
 });
-const port = 3000;
-
+const port = process.env.PORT || 3000;
 app.set("socketio", io);
 
 app.use(cors());
