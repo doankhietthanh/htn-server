@@ -10,6 +10,7 @@ require("dotenv").config();
 const http = require("http");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
+const deleteScanner = require("./route/deleteScanner");
 const io = new Server(server, {
   cors: {
     origin: "*",
@@ -25,6 +26,7 @@ app.get("/getQR", getQR);
 app.post("/getToken", getToken);
 app.post("/scanPerson", scanPerson);
 app.get("/getAllScanned", getAllScanned);
+app.post("/deleteScanner", deleteScanner);
 
 server.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

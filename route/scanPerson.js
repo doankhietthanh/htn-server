@@ -20,11 +20,18 @@ const scanPerson = (req, res) => {
   if (History.exists(data[index].id))
     return res.json({ success: false, message: "person existed" });
 
-  History.insert({ id: uuidv4(), personID: data[index].id });
+  History.insert({
+    id: uuidv4(),
+    personID: data[index].id,
+    time: date.getTime(),
+  });
 
   var io = req.app.get("socketio");
-  io.emit("scan", data[index]);
-  return res.json({ success: true, data: data[index] });
+  io.emit("scan", { ...data[index], time: date.getTime() });
+  return res.json({
+    success: true,
+    data: { ...data[index], time: date.getTime() },
+  });
 };
 
 module.exports = scanPerson;
