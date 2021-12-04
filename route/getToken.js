@@ -1,7 +1,8 @@
 const data = require("../data/data.json");
 
+//function getToken: check token with each person, if true => add data.json, false => print message: "user not found"
 const getToken = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const index = data.findIndex(
     (item) => item.name == req.body.name && item.studentID == req.body.studentID
   );
