@@ -21,7 +21,7 @@ function removeAccents(str) {
     var char = AccentsMap[i][0];
     str = str.replace(re, char);
   }
-  str = str.replaceAll(" ", "");
+  str = str.replace(/ /g, "");
   return str.trim();
 }
 //function getToken: check token with each person, if true => add data.json, false => print message: "user not found"
