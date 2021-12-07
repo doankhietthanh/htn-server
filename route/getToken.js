@@ -22,7 +22,7 @@ function removeAccents(str) {
     str = str.replace(re, char);
   }
   str = str.replace(/ /g, "");
-  return str.trim();
+  return str.trim().toUpperCase();
 }
 //function getToken: check token with each person, if true => add data.json, false => print message: "user not found"
 const getToken = (req, res) => {
